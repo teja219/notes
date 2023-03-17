@@ -1,0 +1,19 @@
+﻿@model KrakenNotes.Web.Models.NoteDetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<a asp-action="Index">< Back to list</a>
+
+<h1>@Model.Title</h1>
+
+<hr>
+
+<p>@Model.Description</p>
+
+<div id="note-content" class="ql-editor">
+    @Html.Raw(Model.Content)
+</div>
+
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>

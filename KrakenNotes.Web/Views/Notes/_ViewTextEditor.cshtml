@@ -1,0 +1,64 @@
+﻿<div class="tool-bar m-1">
+    <div class="btn-group">
+        <button onclick="execCmd('bold');" class="btn btn-light btn-sm"><i class="fas fa-bold"></i></button>
+        <button onclick="execCmd('italic');" class="btn btn-light btn-sm"><i class="fas fa-italic"></i></button>
+    </div>
+
+    <div class="btn-group">
+        <button onclick="execCmd('justifyLeft');" class="btn btn-light btn-sm"><i class="fas fa-align-left"></i></button>
+        <button onclick="execCmd('justifyCenter');" class="btn btn-light btn-sm"><i class="fas fa-align-center"></i></button>
+        <button onclick="execCmd('justifyRight');" class="btn btn-light btn-sm"><i class="fas fa-align-right"></i></button>
+    </div>
+
+    <div class="btn-group">
+        <button onclick="execCmd('cut');" class="btn btn-light btn-sm"><i class="fas fa-cut"></i></button>
+        <button onclick="execCmd('copy');" class="btn btn-light btn-sm"><i class="fas fa-copy"></i></button>
+        <button onclick="execCmd('paste');" class="btn btn-light btn-sm"><i class="fas fa-clipboard"></i></button>
+    </div>
+
+    <div class="btn-group">
+        <button onclick="execCmd('insertUnorderedList');" class="btn btn-light btn-sm"><i class="fas fa-list-ul"></i></button>
+        <button onclick="execCmd('insertOrderedList');" class="btn btn-light btn-sm"><i class="fas fa-list-ol"></i></button>
+    </div>
+
+    <button onclick="execCmd('indent');" class="btn btn-light btn-sm"><i class="fas fa-indent"></i></button>
+
+    <select class="custom-select custom-select-sm d-inline w-auto" onclick="execCmdArg('formatBlock', this.value)">
+        <option value="H1">Heading 1</option>
+        <option value="H2">Heading 2</option>
+        <option value="H3">Heading 3</option>
+        <option value="H4">Heading 4</option>
+        <option value="H5">Heading 5</option>
+        <option value="H6">Heading 6</option>
+    </select>
+</div>
+
+<iframe id="editor" name="richText" style="border: 1px solid #efefef; width: 100%; height: 400px;" srcdoc="@Model.Content"></iframe>
+
+<style>
+    .tool-bar button {
+        text-align: center;
+    }
+
+    .tool-bar .fas {
+        font-size: 16px;
+    }
+</style>
+
+<script type="text/javascript">
+
+    function enableEditMode() {
+        richText.document.designMode = "On";
+    }
+
+    function execCmd(command) {
+        richText.document.execCommand(command, false, null);
+    }
+
+    function execCmdArg(command, arg) {
+        richText.document.execCommand(command, false, arg);
+    }
+    
+    enableEditMode();
+
+</script>
